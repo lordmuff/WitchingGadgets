@@ -44,14 +44,22 @@ import witchinggadgets.client.render.ModelPrimordialArmor;
 import witchinggadgets.common.WGContent;
 import witchinggadgets.common.items.tools.IPrimordialGear;
 
+enum FlightStatus{
+    ON,
+    OFF
+}
+
 public class ItemPrimordialArmor extends ItemShadowFortressArmor
         implements IActiveAbility, IPrimordialCrafting, IEventGear, IPrimordialGear, IRunicArmor {
     IIcon rune;
     byte tickcounter = 0;
 
+    private FlightStatus flightStatus;
+
     public ItemPrimordialArmor(ArmorMaterial mat, int idx, int type) {
         super(mat, idx, type);
         this.setCreativeTab(WitchingGadgets.tabWG);
+        flightStatus= FlightStatus.OFF;
     }
 
     @Override
@@ -183,6 +191,16 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
             player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 202, 0, true));
         }
 
+        //turn flight off or on
+        if ((amorcounter >= 2 && modescounter[0] >= 2)){
+            flightStatus= FlightStatus.ON;
+            player.capabilities.allowFlying = true;
+        }
+        else if (flightStatus.equals(FlightStatus.ON)) {
+            flightStatus= FlightStatus.OFF;
+            player.capabilities.allowFlying = false;
+            player.capabilities.isFlying = false;
+        }
 
         /*if (modes[2]==3) {
         	player.capabilities.setPlayerWalkSpeed(0.75F);
