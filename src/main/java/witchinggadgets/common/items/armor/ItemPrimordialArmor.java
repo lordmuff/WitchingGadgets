@@ -109,9 +109,6 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
 
             for (int i : modes) if (i == 1) ++modescounter;
 
-            if (amorcounter >= 2 && modescounter >= 2) player.capabilities.allowFlying = true;
-            else player.capabilities.allowFlying = false;
-
             /*if(leggings && getAbility(player.getCurrentArmor(2))==3)
             	player.capabilities.setPlayerWalkSpeed(0.75F);
             else
@@ -186,8 +183,6 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
             player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 202, 0, true));
         }
 
-        if (amorcounter >= 2 && modescounter[0] >= 2) player.capabilities.allowFlying = true;
-        else player.capabilities.allowFlying = false;
 
         /*if (modes[2]==3) {
         	player.capabilities.setPlayerWalkSpeed(0.75F);

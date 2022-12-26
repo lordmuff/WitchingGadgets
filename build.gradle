@@ -26,6 +26,11 @@ buildscript {
             url 'https://maven.minecraftforge.net'
         }
         maven {
+            // GTNH ForgeGradle Fork
+            name = "GTNH Maven"
+            url = "http://jenkins.usrv.eu:8081/nexus/content/groups/public/"
+        }
+        maven {
             name 'sonatype'
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
@@ -39,7 +44,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.7'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.13'
     }
 }
 
