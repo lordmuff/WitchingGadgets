@@ -1,4 +1,4 @@
-package witchinggadgets.asm.pouch;
+package witchinggadgets.common.pouch;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
