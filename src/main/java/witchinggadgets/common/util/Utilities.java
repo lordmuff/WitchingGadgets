@@ -46,9 +46,9 @@ import travellersgear.api.TravellersGearAPI;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.common.WGContent;
 import witchinggadgets.common.items.baubles.ItemCloak;
+import witchinggadgets.mixins.early.minecraft.EntityLivingAccessor;
 import baubles.api.BaublesApi;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class Utilities {
 
@@ -413,7 +413,7 @@ public class Utilities {
     }
 
     public static void setAttackTarget(EntityLiving living, EntityLivingBase target) {
-        ReflectionHelper.setPrivateValue(EntityLiving.class, living, target, "attackTarget", "field_70696_bz");
+        ((EntityLivingAccessor) living).setAttackTarget(target);
     }
 
     public static boolean isRightMaterial(Material mat, Material[] materials) {
