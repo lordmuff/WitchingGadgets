@@ -23,7 +23,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -55,8 +54,8 @@ import witchinggadgets.common.items.tools.ItemBag;
 import witchinggadgets.common.magic.WGEnchantSoulbound;
 import witchinggadgets.common.util.Utilities;
 import witchinggadgets.common.util.network.message.MessageClientNotifier;
+import witchinggadgets.mixins.early.minecraft.EntityLivingAccessor;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -275,10 +274,7 @@ public class EventHandler {
                     && player.getCurrentEquippedItem().getItem() instanceof IPrimordialGear
                     && ((IPrimordialGear) player.getCurrentEquippedItem().getItem())
                             .getAbility(player.getCurrentEquippedItem()) == 5) {
-                boolean deobf = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
-                String name = deobf ? "experienceValue" : "field_70728_aV";
-                int baseValue = ObfuscationReflectionHelper
-                        .getPrivateValue(EntityLiving.class, (EntityLiving) event.entityLiving, name);
+                int baseValue = ((EntityLivingAccessor) event.entityLiving).getExperienceValue();
                 int xp = 4 * baseValue;
                 while (xp > 0) {
                     int i = EntityXPOrb.getXPSplit(xp);
