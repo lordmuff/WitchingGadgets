@@ -52,11 +52,6 @@ public class WGCoreTransformer implements IClassTransformer {
             byte[] newCode = patchFocusPouch_Interface(className, origCode);
             return patchFocusPouch_Methods(className, newCode, isDeobfEnvironment);
         }
-        if (className.equals("thaumcraft.common.lib.world.WorldGenEldritchRing"))
-            return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "EldritchRing");
-        if (className.equals("thaumcraft.common.lib.world.WorldGenHilltopStones"))
-            return patchThaumcraftWorldgen(origCode, isDeobfEnvironment, "HilltopStones");
-
         return origCode;
     }
 
