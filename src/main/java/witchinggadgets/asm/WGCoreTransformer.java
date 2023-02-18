@@ -48,10 +48,6 @@ public class WGCoreTransformer implements IClassTransformer {
         isDeobfEnvironment = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
         if (className.equals("thaumcraft.common.items.armor.ItemBootsTraveller"))
             return patchBoots(className, origCode, isDeobfEnvironment);
-        if (className.equals("thaumcraft.common.items.wands.ItemFocusPouchBauble")) {
-            byte[] newCode = patchFocusPouch_Interface(className, origCode);
-            return patchFocusPouch_Methods(className, newCode, isDeobfEnvironment);
-        }
         return origCode;
     }
 

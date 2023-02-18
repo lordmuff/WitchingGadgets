@@ -18,6 +18,7 @@ public class LateMixinLoader implements ILateMixinLoader {
     @Override
     public List<String> getMixins(Set<String> loadedMods) {
         final List<String> mixins = new ArrayList<>();
+        mixins.add("thaumcraft.MixinItemFocusPouchBauble");
         mixins.add("thaumcraft.MixinWorldGenEldritchRing");
         mixins.add("thaumcraft.MixinWorldGenHilltopStones");
         return mixins;
