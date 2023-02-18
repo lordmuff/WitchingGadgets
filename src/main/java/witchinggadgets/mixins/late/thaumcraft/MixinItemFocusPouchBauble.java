@@ -3,7 +3,9 @@ package witchinggadgets.mixins.late.thaumcraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+
 import org.spongepowered.asm.mixin.Mixin;
+
 import thaumcraft.common.items.wands.ItemFocusPouchBauble;
 import travellersgear.api.IActiveAbility;
 import witchinggadgets.WitchingGadgets;

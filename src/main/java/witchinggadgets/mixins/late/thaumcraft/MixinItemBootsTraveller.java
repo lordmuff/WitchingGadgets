@@ -3,7 +3,9 @@ package witchinggadgets.mixins.late.thaumcraft;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+
 import org.spongepowered.asm.mixin.Mixin;
+
 import thaumcraft.common.items.armor.ItemBootsTraveller;
 import witchinggadgets.common.WGConfig;
 

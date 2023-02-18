@@ -1,11 +1,14 @@
 package witchinggadgets.mixins.late.thaumcraft;
 
-import com.gtnewhorizon.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.block.Block;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+
 import thaumcraft.common.lib.world.WorldGenHilltopStones;
 import witchinggadgets.common.WGConfig;
+
+import com.gtnewhorizon.mixinextras.injector.ModifyReturnValue;
 
 @Mixin(WorldGenHilltopStones.class)
 public class MixinWorldGenHilltopStones {

@@ -3,10 +3,12 @@ package witchinggadgets.mixins.early.minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import thaumcraft.common.config.Config;
 import witchinggadgets.common.WGConfig;
 import witchinggadgets.common.items.armor.ItemPrimordialArmor;
@@ -16,7 +18,8 @@ public class MixinEntityLivingBase {
 
     @Inject(method = "onNewPotionEffect", at = @At("RETURN"))
     private void witchinggadgets$onNewPotionEffect(PotionEffect effect, CallbackInfo ci) {
-        if (!WGConfig.coremod_allowPotionApplicationMod || effect == null || ((EntityLivingBase) (Object) this).worldObj.isRemote) {
+        if (!WGConfig.coremod_allowPotionApplicationMod || effect == null
+                || ((EntityLivingBase) (Object) this).worldObj.isRemote) {
             return;
         }
         int id = effect.getPotionID();
