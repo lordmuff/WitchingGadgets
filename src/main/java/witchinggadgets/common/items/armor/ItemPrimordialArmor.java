@@ -118,16 +118,13 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
              * else player.capabilities.setPlayerWalkSpeed(0.1F); if(boots && player.capabilities.isFlying &&
              * getAbility(player.getCurrentArmor(3)) == 6) player.noClip=true; else player.noClip=false;
              */
-
         }
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-        if (!world.isRemote && stack.isItemDamaged() && player.ticksExisted % 20 == 0) {
-            stack.damageItem(-1, player);
-        }
-        
+        if (!world.isRemote && stack.isItemDamaged() && player.ticksExisted % 20 == 0) stack.damageItem(-1, player);
+
         byte amorcounter = 0;
         byte[] modescounter = { 0, 0, 0, 0, 0, 0 };
 
