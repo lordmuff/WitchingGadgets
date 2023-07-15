@@ -55,7 +55,6 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
         implements IActiveAbility, IPrimordialCrafting, IEventGear, IPrimordialGear, IRunicArmor {
 
     IIcon rune;
-    byte tickcounter = 0;
 
     private FlightStatus flightStatus;
 
@@ -125,10 +124,10 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-        ++tickcounter;
-
-        if (tickcounter >= 100) tickcounter = 0;
-
+        if (!world.isRemote && stack.isItemDamaged() && player.ticksExisted % 20 == 0) {
+            stack.damageItem(-1, player);
+        }
+        
         byte amorcounter = 0;
         byte[] modescounter = { 0, 0, 0, 0, 0, 0 };
 
@@ -155,8 +154,6 @@ public class ItemPrimordialArmor extends ItemShadowFortressArmor
             if (i == 5) ++modescounter[4];
             if (i == 6) ++modescounter[5];
         }
-
-        if ((!world.isRemote) && (stack.getItemDamage() > 0) && (tickcounter == 1)) stack.damageItem(-1, player);
 
         if (this.armorType == 3) {
             if (!player.capabilities.isFlying && player.moveForward > 0.0F) {
