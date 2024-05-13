@@ -205,8 +205,11 @@ public class ItemMagicalBaubles extends Item
         }
 
         if (stack.getItemDamage() == 3 && living.isOnLadder()) {
-            if (living.isCollidedHorizontally) living.moveEntity(0, .25, 0);
-            else if (!living.isSneaking()) living.moveEntity(0, -.1875, 0);
+            final boolean isFlying = living instanceof EntityPlayer && ((EntityPlayer) living).capabilities.isFlying;
+            if (!isFlying) {
+                if (living.isCollidedHorizontally) living.moveEntity(0, .25, 0);
+                else if (!living.isSneaking()) living.moveEntity(0, -.1875, 0);
+            }
         }
     }
 
